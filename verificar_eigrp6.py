@@ -6,7 +6,7 @@ client = RestconfClient("192.168.190.2", "admin", "cisco123")
 res1 = client.get("ietf-interfaces:interfaces")
 res2 = client.get("Cisco-IOS-XE-eigrp-oper:eigrp-oper-data")
 res3 = client.get("ietf-routing:routing-state/routing-instance")
-8
+
 with open("evidencias/log_interfaces.txt", "w") as f:
     f.write("Interfaces:\n" + res1.text + "\n")
 
