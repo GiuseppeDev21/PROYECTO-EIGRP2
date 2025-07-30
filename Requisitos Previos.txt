@@ -1,0 +1,107 @@
+Procedimiento: 
+instalar la libreria request [pip install request]
+
+Verificar version de IOSXE 16.6 o superior 17.3.04a en nuestro caso
+HABILITAR EL RESTCONF
+
+-------------------
+configurar los adaptadores de GNS3 VM con para tener el HOST-ONLY
+configurar la nube
+
+poner ipv4 a router con 192.168.190.2 porque en la red normal es .1 y tiene que ver algo con las configuraciones para tener una red local entre el pc y el router.
+ping de pc a router
+
+------------------- 
+Configuración Inicial ROUTER3-CS1000
+enable
+configure terminal
+restconf
+
+! Usuario y AAA
+username admin privilege 15 secret cisco123
+aaa new-model
+aaa authentication login RESTCONF_AUTH local
+aaa authentication login default local
+aaa authorization exec default local
+aaa authorization commands 15 default local
+aaa authorization config-commands
+
+! Línea VTY
+line vty 0 4
+ login authentication RESTCONF_AUTH
+ transport input ssh
+exit
+
+! Servidor RESTCONF
+ip http server
+ip http secure-server
+ip http authentication local
+restconf
+
+! Interfaz conectada a la nube con IP de la red VMware
+interface GigabitEthernet1
+ description >> Interfaz RESTCONF <<
+ ip address 192.168.190.2 255.255.255.0
+ no shutdown
+exit
+
+! Lista de acceso (opcional por seguridad local)
+ip access-list standard RESTCONF-ACCESS
+ permit 192.168.190.0 0.0.0.255
+exit
+exit
+write memory
+------------------- 
+ROUTER 1
+
+enable
+conf t 
+hostname R1
+ip routing
+ipv6 unicast-routing
+
+interface g0/2
+ip address 192.168.10.1 255.255.255.0
+ipv6 address 2001:db8:1::1/64
+ipv6 eigrp 100
+
+no shutdown
+exit
+
+router eigrp 100
+network 192.168.10.0 0.0.0.255
+exit
+
+ipv6 router eigrp 100
+eigrp router-id 1.1.1.1
+exit
+exit
+
+write memory
+------------------- 
+ROUTER 2
+
+enable
+conf t 
+hostname R2
+ip routing
+ipv6 unicast-routing
+
+interface g0/2
+ip address 192.168.20.1 255.255.255.0
+ipv6 address 2001:db8:2::1/64
+ipv6 eigrp 100
+
+no shutdown
+exit
+
+router eigrp 100
+network 192.168.20.0 0.0.0.255
+exit
+
+ipv6 router eigrp 100
+eigrp router-id 2.2.2.2
+exit
+exit
+
+write memory

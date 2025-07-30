@@ -1,0 +1,165 @@
+Vecinos EIGRP:
+{
+  "Cisco-IOS-XE-eigrp-oper:eigrp-oper-data": {
+    "eigrp-instance": [
+      {
+        "afi": "eigrp-af-ipv4",
+        "vrf-name": "",
+        "as-num": 100,
+        "router-id": 3232284162,
+        "name": "",
+        "eigrp-interface": [
+          {
+            "name": "GigabitEthernet2",
+            "hello-interval": 5,
+            "hold-timer": 15,
+            "auth-val": {
+              "auth-mode": "eigrp-auth-none",
+              "auth-key": {
+                "key-chain": "",
+                "sha256-password": ""
+              }
+            },
+            "eigrp-nbr": [
+              {
+                "afi": "eigrp-af-ipv4",
+                "nbr-address": "192.168.10.1",
+                "nbr-sw-ver": {
+                  "os-majorver": 20,
+                  "os-minorver": 0,
+                  "tlv-majorrev": 2,
+                  "tlv-minorrev": 0
+                },
+                "retransmit-count": 1,
+                "retry-count": 0,
+                "last-seq-number": 6,
+                "srtt": 6,
+                "rto": 100
+              }
+            ]
+          },
+          {
+            "name": "GigabitEthernet3",
+            "hello-interval": 5,
+            "hold-timer": 15,
+            "auth-val": {
+              "auth-mode": "eigrp-auth-none",
+              "auth-key": {
+                "key-chain": "",
+                "sha256-password": ""
+              }
+            },
+            "eigrp-nbr": [
+              {
+                "afi": "eigrp-af-ipv4",
+                "nbr-address": "192.168.20.1",
+                "nbr-sw-ver": {
+                  "os-majorver": 20,
+                  "os-minorver": 0,
+                  "tlv-majorrev": 2,
+                  "tlv-minorrev": 0
+                },
+                "retransmit-count": 1,
+                "retry-count": 0,
+                "last-seq-number": 6,
+                "srtt": 4,
+                "rto": 100
+              }
+            ]
+          }
+        ],
+        "eigrp-topo": [
+          {
+            "topo-id": 0
+          }
+        ]
+      },
+      {
+        "afi": "eigrp-af-ipv6",
+        "vrf-name": "",
+        "as-num": 100,
+        "router-id": 3232284162,
+        "named-mode": [null],
+        "name": "ZONA1",
+        "eigrp-interface": [
+          {
+            "name": "GigabitEthernet1",
+            "hello-interval": 5,
+            "hold-timer": 15,
+            "auth-val": {
+              "auth-mode": "eigrp-auth-none",
+              "auth-key": {
+                "key-chain": "",
+                "sha256-password": ""
+              }
+            }
+          },
+          {
+            "name": "GigabitEthernet2",
+            "hello-interval": 5,
+            "hold-timer": 15,
+            "auth-val": {
+              "auth-mode": "eigrp-auth-none",
+              "auth-key": {
+                "key-chain": "",
+                "sha256-password": ""
+              }
+            },
+            "eigrp-nbr": [
+              {
+                "afi": "eigrp-af-ipv6",
+                "nbr-address": "fe80::ef9:e1ff:fe70:2",
+                "nbr-sw-ver": {
+                  "os-majorver": 20,
+                  "os-minorver": 0,
+                  "tlv-majorrev": 2,
+                  "tlv-minorrev": 0
+                },
+                "retransmit-count": 1,
+                "retry-count": 0,
+                "last-seq-number": 6,
+                "srtt": 5,
+                "rto": 100
+              }
+            ]
+          },
+          {
+            "name": "GigabitEthernet3",
+            "hello-interval": 5,
+            "hold-timer": 15,
+            "auth-val": {
+              "auth-mode": "eigrp-auth-none",
+              "auth-key": {
+                "key-chain": "",
+                "sha256-password": ""
+              }
+            },
+            "eigrp-nbr": [
+              {
+                "afi": "eigrp-af-ipv6",
+                "nbr-address": "fe80::e55:3bff:fe53:2",
+                "nbr-sw-ver": {
+                  "os-majorver": 20,
+                  "os-minorver": 0,
+                  "tlv-majorrev": 2,
+                  "tlv-minorrev": 0
+                },
+                "retransmit-count": 1,
+                "retry-count": 0,
+                "last-seq-number": 6,
+                "srtt": 4,
+                "rto": 100
+              }
+            ]
+          }
+        ],
+        "eigrp-topo": [
+          {
+            "topo-id": 0
+          }
+        ]
+      }
+    ]
+  }
+}
+
